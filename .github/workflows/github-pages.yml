@@ -1,0 +1,50 @@
+name: Deploy Portfolio to GitHub Pages
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+name: Build and deploy GitHub Pages site
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configuration Airflow
+        uses: actions/configure-pages@v5
+        with:
+          version: v3
+
+      - name: Build site
+        run: |
+          mkdir -p _site
+          cp README.md _site/index.md
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Print deployment summary
+        run: |
+          echo "Site URL: ${{ steps.deployment.outputs.page_url }}"
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
