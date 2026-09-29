@@ -17,4 +17,4 @@
 - Notion AI: Notes
 
 ## Contact
-Bhagyashri Kachare | bkachare@gmail.com | linkedin.com/in/bhagyashri-kachare-joshi-ab091831
+Bhagyashri Kachare | Pune, Maharashtra, India | bkachare@gmail.com | linkedin.com/in/bhagyashri-kachare-joshi-ab091831
